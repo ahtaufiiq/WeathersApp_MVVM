@@ -23,11 +23,14 @@ open class WeatherApiDao{
     {
         @SerializedName("dt")
         val dt: Int? = 0
-//        @SerializedName("rain")
-//        val rain: Rain?=null
-//        @SerializedName("coord")
-//        val coord: Coord?=null
+        @SerializedName("rain")
+        @Expose
+        val rain: Rain?=null
+        @SerializedName("coord")
+        @Expose
+        val coord: Coord?=null
         @SerializedName("snow")
+        @Expose
         val snow: Double? = null
         @SerializedName("name")
         @Expose
@@ -64,35 +67,40 @@ open class WeatherApiDao{
 
         open class WeatherItem{
             @SerializedName("icon")
-                               val icon: String? = ""
-                               @SerializedName("description")
-                               val description: String? = ""
-                               @SerializedName("main")
-                               val main: String? = ""
-                               @SerializedName("id")
-                               val id: Int? = 0}
+            @Expose
+            val icon: String? = ""
+            @SerializedName("description")
+            @Expose
+            val description: String? = ""
+            @SerializedName("main")
+            @Expose
+            val main: String? = null
+            @SerializedName("id")
+            @Expose
+            val id: Int? = 0
+        }
 
-//        open class Coord{@SerializedName("lon")
-//                         val lon: Double? = 0.0
-//                         @SerializedName("lat")
-//                         val lat: Double? = 0.0}
-//
-//
-//        open class Wind{@SerializedName("deg")
-//                        val deg: Int? = 0
-//                        @SerializedName("speed")
-//                        val speed: Double? = 0.0}
-//
-//
-//        open class Rain{@SerializedName("3h")
-//                        val H: Double? = 0.0}
-//
-//
-//        open class Clouds{@SerializedName("all")
-//                          val all: Int? = 0}
-//
-//        open class Sys{@SerializedName("country")
-//                       val country: String? = ""}
+        open class Coord{@SerializedName("lon")
+                         val lon: Double? = 0.0
+                         @SerializedName("lat")
+                         val lat: Double? = 0.0}
+
+
+        open class Wind{@SerializedName("deg")
+                        val deg: Int? = 0
+                        @SerializedName("speed")
+                        val speed: Double? = 0.0}
+
+
+        open class Rain{@SerializedName("3h")
+                        val H: Double? = 0.0}
+
+
+        open class Clouds{@SerializedName("all")
+                          val all: Int? = 0}
+
+        open class Sys{@SerializedName("country")
+                       val country: String? = ""}
     }
 
 }

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.Toast
 import com.example.ataufiq.weathersapp_mvvm.R
 import com.example.ataufiq.weathersapp_mvvm.data.Weather
 import com.example.ataufiq.weathersapp_mvvm.DetailActivity.DetailActivity
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity(), WeathersItemUserActionListener {
         val intent = Intent(this, DetailActivity::class.java).apply {
             putExtras(bundle)
         }
+        Toast.makeText(getApplication(),"Error at "+weather.name, Toast.LENGTH_SHORT).show()
         startActivity(intent)
 
     }

@@ -8,6 +8,7 @@ import com.example.ataufiq.weathersapp_mvvm.R
 
 import com.example.ataufiq.weathersapp_mvvm.data.Weather
 import com.example.ataufiq.weathersapp_mvvm.databinding.CardWeatherBinding
+import com.example.ataufiq.weathersapp_mvvm.util.load
 
 class MainAdapter(private var weathers: MutableList<Weather>, private var mainViewModel: MainViewModel) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -45,10 +46,10 @@ class MainAdapter(private var weathers: MutableList<Weather>, private var mainVi
             weatherRowBinding.datas =  weather
             weatherRowBinding.action = userActionListener
             weatherRowBinding.executePendingBindings()
-//            if(weather.urlToImage!= null)
-//                weatherRowBinding.ivRowWeatherImage.load(weather.urlToImage!!){
-//                    requestCreator -> requestCreator.fit().centerCrop()
-//                }
+            if(weather.icon!= null)
+                weatherRowBinding.ivRowWeatherImage.load("http://openweathermap.org/img/w/${weather.icon!!}.png"){
+                    requestCreator -> requestCreator.fit().centerCrop()
+                }
         }
     }
 }

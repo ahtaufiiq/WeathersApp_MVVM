@@ -4,14 +4,20 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class Weather(
-        var name: String? = null
+        var name: String? = null,
+        var icon: String? = null,
+        var description: String? = null
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
-            parcel.readString()) {
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString()){
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
+        parcel.writeString(icon)
+        parcel.writeString(description)
     }
 
     override fun describeContents(): Int {

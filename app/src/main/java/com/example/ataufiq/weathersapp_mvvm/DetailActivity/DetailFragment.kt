@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.ataufiq.weathersapp_mvvm.data.Weather
 import com.example.ataufiq.weathersapp_mvvm.databinding.FragmentDetailBinding
 
 
@@ -22,6 +23,14 @@ class DetailFragment : Fragment() {
     private lateinit var viewBinding: FragmentDetailBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+
+        // Inflate the layout for this fragment
+        viewBinding = FragmentDetailBinding.inflate(inflater, container, false).apply {
+            vm = (activity as DetailActivity).obtainViewModel().apply {
+                val weather : Weather? = arguments?.getParcelable(DetailActivity.EXTRA_PARCELABLE)
+                details.set(weather)
+            }
+        }
 
         return viewBinding.root
 
