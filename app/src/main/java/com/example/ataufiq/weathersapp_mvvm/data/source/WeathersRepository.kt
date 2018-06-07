@@ -12,17 +12,14 @@ class WeathersRepository(
         remoteDataSource.getWeather(object : WeathersDataSource.GetWeatherCallback {
             override fun onWeatherLoaded(weathers: MutableList<Weather>?) {
                 callback.onWeatherLoaded(weathers)
-                Log.d("Error Result","Success")
             }
 
             override fun onNotAvailable() {
                 callback.onNotAvailable()
-                Log.d("Error Result","Not Available")
             }
 
             override fun onError(msg: String?) {
                 callback.onError(msg)
-                Log.d("Error Result",msg)
             }
 
         })

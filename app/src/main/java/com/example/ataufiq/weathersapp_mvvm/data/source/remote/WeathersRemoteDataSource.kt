@@ -17,26 +17,23 @@ object WeathersRemoteDataSource : WeathersDataSource {
                 .subscribeOn(Schedulers.io())
                 .subscribe({ results ->
                     run {
-                        if (results.count != 0) {
-                            Log.d("Result",results.count.toString())
                             val listWeather: MutableList<Weather> = mutableListOf<Weather>()
                             for (items: WeatherApiDao.ListItem in results.list!!) {
                                 val weather: Weather = Weather()
                                 weather.name = items.name
-                                Log.d("Result",items.name.toString())
+                                for (weatherItem:WeatherApiDao.ListItem.WeatherItem in items.weather!!){
+                                    weather.icon = weatherItem.icon
+                                    weather.description=weatherItem.description
+                                }
 
                                 listWeather.add(weather)
                             }
 
                             callback.onWeatherLoaded(listWeather)
-                        } else {
-                            Log.d("NotResult",results.count.toString())
-                            callback.onNotAvailable()
-                        }
+
                     }
                 }, { error ->
                     callback.onError(error.message)
-                    Log.d("Error Result",error.message)
                 })
     }
 

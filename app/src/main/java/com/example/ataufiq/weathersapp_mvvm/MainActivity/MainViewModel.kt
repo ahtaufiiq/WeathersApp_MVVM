@@ -17,7 +17,6 @@ class MainViewModel(application: Application, private val weatherRepository: Wea
 
     fun start(){
         getWeather()
-        Log.d("Start Resulr","Start")
     }
 
     private fun getWeather(){
@@ -28,7 +27,6 @@ class MainViewModel(application: Application, private val weatherRepository: Wea
 
             override fun onError(msg: String?) {
                 Toast.makeText(getApplication(),"Error at "+msg,Toast.LENGTH_SHORT).show()
-                Log.d("Error Result",msg)
             }
 
             override fun onWeatherLoaded(weathers: MutableList<Weather>?) {
