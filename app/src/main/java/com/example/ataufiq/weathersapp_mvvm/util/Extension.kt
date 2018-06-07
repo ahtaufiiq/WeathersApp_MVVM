@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
@@ -47,6 +48,7 @@ fun ImageView.load(path: String, request: (RequestCreator) -> RequestCreator){
 @BindingAdapter("imageUrl")
 fun loadImage(view: ImageView, url:String?) {
     if (url != null) {
-        view.load(url){ requestCreator -> requestCreator.fit().centerCrop() }
+        Log.d("Image","http://openweathermap.org/img/w/${url}.png")
+        view.load("http://openweathermap.org/img/w/${url}.png"){ requestCreator -> requestCreator.fit().centerCrop() }
     }
 }

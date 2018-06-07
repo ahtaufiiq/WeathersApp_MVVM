@@ -57,7 +57,6 @@ class MainActivity : AppCompatActivity(), WeathersItemUserActionListener {
         val intent = Intent(this, DetailActivity::class.java).apply {
             putExtras(bundle)
         }
-        Toast.makeText(getApplication(),"Error at "+weather.name, Toast.LENGTH_SHORT).show()
         startActivity(intent)
 
     }
