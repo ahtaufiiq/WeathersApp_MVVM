@@ -6,10 +6,10 @@
         <import type="android.view.View"/>
         <variable
             name="action"
-            type="internship.gits.weatherapps.newsdetail.DetailUserActionListener"/>
+            type="com.example.ataufiq.weathersapp_mvvm.DetailActivity.DetailUserActionListener"/>
         <variable
             name="vm"
-            type="internship.gits.weatherapps.newsdetail.DetailViewModel"/>
+            type="com.example.ataufiq.weathersapp_mvvm.DetailActivity.DetailViewModel"/>
     </data>
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,9 +23,7 @@
                 android:id="@+id/ivDetailImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:src="@android:color/darker_gray"
-                android:transitionName="ImageNewsTrantition"
-                imageUrl="@{vm.details.urlToImage}"/>
+                tools:src="@android:color/darker_gray" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,7 +37,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="24sp"
-                    android:text="@{vm.details.title}"
                     android:maxLines="2"
                     android:textColor="@android:color/white"
                     android:textStyle="bold" />
@@ -48,7 +45,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:text="@{vm.details.sourceName}"
                     android:maxLines="1"
                     android:textColor="@android:color/white"/>
             </LinearLayout>
@@ -64,19 +60,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="@{vm.details.publishedAt}"
                 android:layout_weight="1"/>
             <TextView
                 android:id="@+id/tvDetailDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{vm.details.description}"
                 android:layout_weight="4"/>
             <TextView
                 android:id="@+id/tvDetailAuthor"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{vm.details.author}"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
         <Button
             android:id="@+id/btnDetailMore"
@@ -84,7 +77,6 @@
             android:layout_height="wrap_content"
             android:text="View More"
             android:elevation="8dp"
-            android:onClick="@{()->action.onClickMoreInfo()}"
             android:background="@color/colorPrimaryDark"
             android:textColor="@android:color/white" />
     </LinearLayout>

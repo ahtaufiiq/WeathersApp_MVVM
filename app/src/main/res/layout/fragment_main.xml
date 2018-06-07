@@ -6,26 +6,19 @@
         <import type="android.view.View"/>
         <variable
             name="vm"
-            type="internship.gits.weatherapps.news.MainViewModel"/>
+            type="com.example.ataufiq.weathersapp_mvvm.MainActivity.MainViewModel"/>
     </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:textSize="24sp"
-            android:text="TOP NEWS"
-            android:textStyle="bold"/>
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvNewsFrag"
+            android:id="@+id/rvWeatherFrag"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="LinearLayoutManager"
-            app:newsList="@{vm.newsList}"
-            tools:listitem="@layout/main_row">
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:weatherList="@{vm.weatherList}"
+            tools:listitem="@layout/card_weather">
 
         </android.support.v7.widget.RecyclerView>
     </LinearLayout>

@@ -1,6 +1,5 @@
-package internship.gits.weatherapps.util
+package com.example.ataufiq.weathersapp_mvvm.util
 
-import android.app.FragmentTransaction
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
@@ -13,7 +12,6 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
-import java.security.cert.CertPath
 
 fun AppCompatActivity.setupActionBar(@IdRes toolbarId: Int, action: ActionBar.() -> Unit) {
     setSupportActionBar(findViewById(toolbarId))

@@ -1,12 +1,12 @@
-package internship.gits.weatherapps.util
+package com.example.ataufiq.weathersapp_mvvm.util
 
 import android.content.Context
 import android.preference.PreferenceManager
-import internship.gits.weatherapps.data.source.NewsRepository
-import internship.gits.weatherapps.data.source.local.NewsLocalDataSource
-import internship.gits.weatherapps.data.source.remote.NewsRemoteDataSource
+import com.example.ataufiq.weathersapp_mvvm.data.source.WeathersRepository
+import com.example.ataufiq.weathersapp_mvvm.data.source.remote.WeathersRemoteDataSource
+import com.example.ataufiq.weathersapp_mvvm.data.source.local.WeathersLocalDataSource
 
 object Injection{
-    fun provideNewsRepository(context: Context) = NewsRepository.getInstance(NewsRemoteDataSource,
-            NewsLocalDataSource.getInstance(PreferenceManager.getDefaultSharedPreferences(context))!!)
+    fun provideWeatherRepository(context: Context) = WeathersRepository.getInstance(WeathersRemoteDataSource,
+            WeathersLocalDataSource.getInstance(PreferenceManager.getDefaultSharedPreferences(context))!!)
 }

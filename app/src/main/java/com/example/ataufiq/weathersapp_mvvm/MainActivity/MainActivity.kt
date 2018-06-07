@@ -4,15 +4,13 @@ import android.arch.lifecycle.Observer
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.example.ataufiq.weathersapp_mvvm.R
-import internship.gits.weatherapps.data.News
-import internship.gits.weatherapps.news.MainFragment
-import internship.gits.weatherapps.news.MainViewModel
-import internship.gits.weatherapps.news.WeathersItemUserActionListener
-import internship.gits.weatherapps.newsdetail.DetailActivity
-import internship.gits.weatherapps.util.obtainViewModel
-import internship.gits.weatherapps.util.replaceFragmentInActivity
-import internship.gits.weatherapps.util.setupActionBar
+import com.example.ataufiq.weathersapp_mvvm.data.Weather
+import com.example.ataufiq.weathersapp_mvvm.DetailActivity.DetailActivity
+import com.example.ataufiq.weathersapp_mvvm.util.obtainViewModel
+import com.example.ataufiq.weathersapp_mvvm.util.replaceFragmentInActivity
+import com.example.ataufiq.weathersapp_mvvm.util.setupActionBar
 
 class MainActivity : AppCompatActivity(), WeathersItemUserActionListener {
 
@@ -21,8 +19,8 @@ class MainActivity : AppCompatActivity(), WeathersItemUserActionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_act)
-
+        setContentView(R.layout.activity_main)
+        Log.d("Start Result","Start")
         setupToolbar()
         setupFragment()
         setupViewModel()
@@ -33,28 +31,28 @@ class MainActivity : AppCompatActivity(), WeathersItemUserActionListener {
 
     private fun setupViewModel() {
         viewModel = obtainViewModel().apply{
-            openDetailNews.observe(this@MainActivity, Observer{ news ->
-                onNewsClicked(news!!)
+            openDetailWeather.observe(this@MainActivity, Observer{ weather ->
+                onWeatherClicked(weather!!)
             })
         }
     }
 
     private fun setupFragment() {
-        supportFragmentManager.findFragmentById(R.id.frameNews)
+        supportFragmentManager.findFragmentById(R.id.frameWeather)
         MainFragment.newInstance().let {
-            replaceFragmentInActivity(it, R.id.frameNews)
+            replaceFragmentInActivity(it, R.id.frameWeather)
         }
     }
 
     private fun setupToolbar() {
         setupActionBar(R.id.toolbar){
-            title = "NewsApp"
+            title = "WeathersApp"
         }
     }
 
-    override fun onNewsClicked(news : News){
+    override fun onWeatherClicked(weather : Weather){
         val bundle = Bundle()
-        bundle.putParcelable(DetailActivity.EXTRA_PARCELABLE,news)
+        bundle.putParcelable(DetailActivity.EXTRA_PARCELABLE,weather)
         val intent = Intent(this, DetailActivity::class.java).apply {
             putExtras(bundle)
         }

@@ -1,7 +1,7 @@
-package internship.gits.weatherapps.news
+package com.example.ataufiq.weathersapp_mvvm.MainActivity
 
-import internship.gits.weatherapps.data.News
+import com.example.ataufiq.weathersapp_mvvm.data.Weather
 
 interface WeathersItemUserActionListener {
-    fun onNewsClicked(news: News)
+    fun onWeatherClicked(weather: Weather)
 }

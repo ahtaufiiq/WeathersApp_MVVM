@@ -1,22 +1,18 @@
-package internship.gits.weatherapps.newsdetail
+package com.example.ataufiq.weathersapp_mvvm.DetailActivity
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.databinding.ObservableField
-import internship.gits.weatherapps.data.News
-import internship.gits.weatherapps.data.source.NewsRepository
-import internship.gits.weatherapps.util.SingleLiveEvent
+import com.example.ataufiq.weathersapp_mvvm.data.Weather
+import com.example.ataufiq.weathersapp_mvvm.data.source.WeathersRepository
+import com.example.ataufiq.weathersapp_mvvm.util.SingleLiveEvent
 
-class DetailViewModel(application: Application, newsRepository: NewsRepository) : AndroidViewModel(application){
-    val details: ObservableField<News> = ObservableField()
+class DetailViewModel(application: Application, weatherRepository: WeathersRepository) : AndroidViewModel(application){
+    val details: ObservableField<Weather> = ObservableField()
     internal val openBrowser = SingleLiveEvent<String>()
 
     fun start(){
 
-    }
-
-    fun loadWeb() {
-        openBrowser.value = details.get()?.url
     }
 
 
