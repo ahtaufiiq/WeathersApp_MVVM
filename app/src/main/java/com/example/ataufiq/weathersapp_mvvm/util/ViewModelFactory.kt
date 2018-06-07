@@ -1,26 +1,26 @@
-package internship.gits.weatherapps.util
+package com.example.ataufiq.weathersapp_mvvm.util
 
 import android.annotation.SuppressLint
 import android.app.Application
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import android.support.annotation.VisibleForTesting
-import internship.gits.weatherapps.data.source.NewsRepository
-import internship.gits.weatherapps.news.MainViewModel
-import internship.gits.weatherapps.newsdetail.DetailViewModel
+import com.example.ataufiq.weathersapp_mvvm.data.source.WeathersRepository
+import com.example.ataufiq.weathersapp_mvvm.DetailActivity.DetailViewModel
+import com.example.ataufiq.weathersapp_mvvm.MainActivity.MainViewModel
 
 class ViewModelFactory private constructor(
         private val application: Application,
-        private val newsRepository: NewsRepository
+        private val weatherRepository: WeathersRepository
 ) : ViewModelProvider.NewInstanceFactory(){
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>)= with(modelClass) {
         when{
             isAssignableFrom(MainViewModel::class.java) ->
-                MainViewModel(application,newsRepository)
+                MainViewModel(application,weatherRepository)
             isAssignableFrom(DetailViewModel::class.java) ->
-                    DetailViewModel(application,newsRepository)
+                    DetailViewModel(application,weatherRepository)
             else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
@@ -35,7 +35,7 @@ class ViewModelFactory private constructor(
                         ?: synchronized(ViewModelFactory::class.java){
                     INSTANCE
                             ?: ViewModelFactory(
-                                    application, Injection.provideNewsRepository(application.applicationContext))
+                                    application, Injection.provideWeatherRepository(application.applicationContext))
                             .also { INSTANCE = it }
                 }
 

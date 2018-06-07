@@ -1,4 +1,4 @@
-package internship.gits.weatherapps.newsdetail
+package com.example.ataufiq.weathersapp_mvvm.DetailActivity
 
 interface DetailUserActionListener {
     fun onClickMoreInfo()

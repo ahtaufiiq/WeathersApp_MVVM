@@ -1,4 +1,4 @@
-package internship.gits.weatherapps.newsdetail
+package com.example.ataufiq.weathersapp_mvvm.DetailActivity
 
 
 import android.os.Bundle
@@ -6,8 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.ataufiq.weathersapp_mvvm.databinding.DetailFragBinding
-import internship.gits.weatherapps.data.News
+import com.example.ataufiq.weathersapp_mvvm.databinding.FragmentDetailBinding
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -20,29 +19,16 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class DetailFragment : Fragment() {
-    private lateinit var viewBinding: DetailFragBinding
+    private lateinit var viewBinding: FragmentDetailBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        viewBinding = DetailFragBinding.inflate(inflater, container, false).apply {
-            vm = (activity as DetailActivity).obtainViewModel().apply {
-                val news : News? = arguments?.getParcelable(DetailActivity.EXTRA_PARCELABLE)
-                details.set(news)
-            }
-            action = object :  DetailUserActionListener {
-                override fun onClickMoreInfo() {
-                    vm?.loadWeb()
-                }
-            }
-        }
+
         return viewBinding.root
 
     }
 
     override fun onResume() {
         super.onResume()
-
-        viewBinding.vm?.start()
     }
 
     companion object {

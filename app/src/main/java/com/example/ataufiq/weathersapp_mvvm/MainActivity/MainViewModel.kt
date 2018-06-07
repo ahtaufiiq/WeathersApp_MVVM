@@ -1,37 +1,40 @@
-package internship.gits.weatherapps.news
+package com.example.ataufiq.weathersapp_mvvm.MainActivity
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.databinding.ObservableArrayList
 import android.databinding.ObservableList
+import android.util.Log
 import android.widget.Toast
-import internship.gits.weatherapps.data.News
-import internship.gits.weatherapps.data.source.NewsDataSource
-import internship.gits.weatherapps.data.source.NewsRepository
-import internship.gits.weatherapps.util.SingleLiveEvent
+import com.example.ataufiq.weathersapp_mvvm.data.Weather
+import com.example.ataufiq.weathersapp_mvvm.data.source.WeathersDataSource
+import com.example.ataufiq.weathersapp_mvvm.data.source.WeathersRepository
+import com.example.ataufiq.weathersapp_mvvm.util.SingleLiveEvent
 
-class MainViewModel(application: Application, private val newsRepository: NewsRepository) : AndroidViewModel(application){
-    val newsList: ObservableList<News> = ObservableArrayList()
-    internal val openDetailNews = SingleLiveEvent<News>()
+class MainViewModel(application: Application, private val weatherRepository: WeathersRepository) : AndroidViewModel(application){
+    val weatherList: ObservableList<Weather> = ObservableArrayList()
+    internal val openDetailWeather = SingleLiveEvent<Weather>()
 
     fun start(){
-        getNews()
+        getWeather()
+        Log.d("Start Resulr","Start")
     }
 
-    private fun getNews(){
-        newsRepository.getNews(object : NewsDataSource.GetNewsCallback{
+    private fun getWeather(){
+        weatherRepository.getWeather(object : WeathersDataSource.GetWeatherCallback{
             override fun onNotAvailable() {
                 Toast.makeText(getApplication(),"No Data Found",Toast.LENGTH_SHORT).show()
             }
 
             override fun onError(msg: String?) {
                 Toast.makeText(getApplication(),"Error at "+msg,Toast.LENGTH_SHORT).show()
+                Log.d("Error Result",msg)
             }
 
-            override fun onNewsLoaded(news: MutableList<News>?) {
-                with(newsList){
+            override fun onWeatherLoaded(weathers: MutableList<Weather>?) {
+                with(weatherList){
                     clear()
-                    addAll(news!!)
+                    addAll(weathers!!)
                 }
             }
         })

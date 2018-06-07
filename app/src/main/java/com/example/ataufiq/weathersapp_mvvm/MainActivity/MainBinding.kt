@@ -1,15 +1,16 @@
-package internship.gits.weatherapps.news
+package com.example.ataufiq.weathersapp_mvvm.MainActivity
 
 import android.databinding.BindingAdapter
 import android.support.v7.widget.RecyclerView
-import internship.gits.weatherapps.data.News
+import com.example.ataufiq.weathersapp_mvvm.MainActivity.MainAdapter
+import com.example.ataufiq.weathersapp_mvvm.data.Weather
 
 object MainBinding {
-    @BindingAdapter("app:newsList")
+    @BindingAdapter("app:weatherList")
     @JvmStatic
-    fun setNewsList(recyclerView: RecyclerView, news: MutableList<News>) {
+    fun setWeatherList(recyclerView: RecyclerView, weathers: MutableList<Weather>) {
         with(recyclerView.adapter as MainAdapter){
-            replaceData(news)
+            replaceData(weathers)
         }
     }
 }

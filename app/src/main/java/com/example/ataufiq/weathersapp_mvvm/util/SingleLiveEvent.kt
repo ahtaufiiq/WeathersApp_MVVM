@@ -1,4 +1,4 @@
-package internship.gits.weatherapps.util
+package com.example.ataufiq.weathersapp_mvvm.util
 
 import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.MutableLiveData
