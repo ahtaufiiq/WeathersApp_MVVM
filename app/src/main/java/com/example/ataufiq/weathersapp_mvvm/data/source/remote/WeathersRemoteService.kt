@@ -10,7 +10,7 @@ import retrofit2.http.GET
 
 
 interface WeathersRemoteService {
-    @GET("data/2.5/find?lat=-6.914744&lon=107.609810&cnt=10&appId=a1a21b58dc969cb4d32bc5868a090256")
+    @GET("data/2.5/find?lat=-6.914744&lon=107.609810&cnt=15&appId=a1a21b58dc969cb4d32bc5868a090256")
     fun getWeather() : Observable<WeatherApiDao>
 
     companion object Factory {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <import type="android.view.View"/>
@@ -19,57 +20,60 @@
         android:layout_marginRight="8dp"
         android:elevation="8dp">
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:padding="8dp">
 
+            <TextView
+                android:id="@+id/tvRowWeatherTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:text="@{datas.name}"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="City" />
+
+            <TextView
+                android:id="@+id/tvRowWeatherSource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:text="@{datas.main}"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvRowWeatherTitle"
+                tools:text="Description Weather" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:text="@{datas.description}"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvRowWeatherSource"
+                tools:text="Description Weather" />
             <ImageView
                 android:id="@+id/ivRowWeatherImage"
+                imageUrl="@{datas.icon}"
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
-                tools:src="@android:color/darker_gray"
+                android:layout_marginEnd="8dp"
                 android:scaleType="centerCrop"
-                imageUrl="@{datas.icon}"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                >
-                <TextView
-                    android:id="@+id/tvRowWeatherTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="3"
-                    android:maxLines="2"
-                    android:textSize="18sp"
-                    tools:text="Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem"
-                    android:gravity="center_vertical"
-                    android:text="@{datas.name}"
-                    />
-                <TextView
-                    android:id="@+id/tvRowWeatherSource"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:textSize="14sp"
-                    tools:text="Lorem"
-                    android:gravity="center_vertical"
-                    android:text="@{datas.description}"/>
-                <TextView
-                    android:id="@+id/tvRowWeatherPublish"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:textSize="14sp"
-                    android:gravity="center_vertical"
-                    tools:text="dd mm yyyy"
-                    android:text="@{datas.icon}" />
-            </LinearLayout>
-        </LinearLayout>
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:src="@android:color/darker_gray" />
+
+        </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 </layout>

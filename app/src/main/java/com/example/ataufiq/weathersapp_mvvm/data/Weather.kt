@@ -5,6 +5,7 @@ import android.os.Parcelable
 
 class Weather(
         var name: String? = null,
+        var main: String? = null,
         var icon: String? = null,
         var description: String? = null
 ) : Parcelable {
@@ -16,6 +17,7 @@ class Weather(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
+        parcel.writeString(main)
         parcel.writeString(icon)
         parcel.writeString(description)
     }

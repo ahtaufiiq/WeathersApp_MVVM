@@ -5,29 +5,64 @@
     <data>
         <import type="android.view.View"/>
         <variable
-            name="action"
-            type="com.example.ataufiq.weathersapp_mvvm.DetailActivity.DetailUserActionListener"/>
-        <variable
             name="vm"
             type="com.example.ataufiq.weathersapp_mvvm.DetailActivity.DetailViewModel"/>
     </data>
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvDetailTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="24sp"
-                    android:maxLines="2"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    android:text="@{vm.details.name}"/>
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    imageUrl="@{vm.details.icon}"/>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tvDetailTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:maxLines="2"
+            android:text="@{vm.details.name}"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="Kota Bandung"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_weather"
+            imageUrl="@{vm.details.icon}"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDetailTitle"
+            tools:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{vm.details.main}"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            tools:text="Clear"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@+id/img_weather" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            tools:text="Sky Is Clear"
+            android:text="@{vm.details.description}"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+    </android.support.constraint.ConstraintLayout>
 </layout>
