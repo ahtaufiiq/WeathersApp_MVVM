@@ -6,6 +6,7 @@ import android.util.Log
 import com.example.ataufiq.weathersapp_mvvm.data.source.remote.dao.WeatherApiDao
 import com.example.ataufiq.weathersapp_mvvm.data.Weather
 import com.example.ataufiq.weathersapp_mvvm.data.source.WeathersDataSource
+import com.example.ataufiq.weathersapp_mvvm.util.Constant
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -24,6 +25,7 @@ object WeathersRemoteDataSource : WeathersDataSource {
                                 for (weatherItem:WeatherApiDao.ListItem.WeatherItem in items.weather!!){
                                     weather.icon = weatherItem.icon
                                     weather.description=weatherItem.description
+                                    weather.main=weatherItem.main
                                 }
 
                                 listWeather.add(weather)

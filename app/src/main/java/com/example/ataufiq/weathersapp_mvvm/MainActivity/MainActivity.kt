@@ -2,9 +2,12 @@ package com.example.ataufiq.weathersapp_mvvm.MainActivity
 
 import android.arch.lifecycle.Observer
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.support.v4.util.Pair
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.example.ataufiq.weathersapp_mvvm.R
 import com.example.ataufiq.weathersapp_mvvm.data.Weather
@@ -22,7 +25,6 @@ class MainActivity : AppCompatActivity(), WeathersItemUserActionListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d("Start Result","Start")
-        setupToolbar()
         setupFragment()
         setupViewModel()
         mActivity = this
@@ -42,12 +44,6 @@ class MainActivity : AppCompatActivity(), WeathersItemUserActionListener {
         supportFragmentManager.findFragmentById(R.id.frameWeather)
         MainFragment.newInstance().let {
             replaceFragmentInActivity(it, R.id.frameWeather)
-        }
-    }
-
-    private fun setupToolbar() {
-        setupActionBar(R.id.toolbar){
-            title = "WeathersApp"
         }
     }
 
