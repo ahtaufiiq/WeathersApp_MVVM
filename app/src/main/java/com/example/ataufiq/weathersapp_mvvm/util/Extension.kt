@@ -48,7 +48,6 @@ fun ImageView.load(path: String, request: (RequestCreator) -> RequestCreator){
 @BindingAdapter("imageUrl")
 fun loadImage(view: ImageView, url:String?) {
     if (url != null) {
-        Log.d("Image","http://openweathermap.org/img/w/${url}.png")
         view.load("http://openweathermap.org/img/w/${url}.png"){ requestCreator -> requestCreator.fit().centerCrop() }
     }
 }

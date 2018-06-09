@@ -38,32 +38,37 @@ open class WeatherApiDao{
         @SerializedName("weather")
         @Expose
         val weather: List<WeatherItem>?=null
-//        @SerializedName("main")
-//        val main: List<Main>?=null
-//        @SerializedName("id")
-//        val id: Int? = 0
-//        @SerializedName("clouds")
-//        val clouds: Clouds?=null
-//        @SerializedName("sys")
-//        val sys: Sys?=null
-//        @SerializedName("wind")
-//        val wind: List<Wind>?=null
+        @SerializedName("main")
+        @Expose
+        val main: Main?=null
+        @SerializedName("id")
+        @Expose
+        val id: Int? = 0
+        @SerializedName("clouds")
+        @Expose
+        val clouds: Clouds?=null
+        @SerializedName("sys")
+        @Expose
+        val sys: Sys?=null
+        @SerializedName("wind")
+        @Expose
+        val wind: Wind?=null
 
-//        open class Main{@SerializedName("temp")
-//        val temp: Double? = 0.0
-//            @SerializedName("temp_min")
-//            val tempMin: Double? = 0.0
-//            @SerializedName("grnd_level")
-//            val grndLevel: Double? = 0.0
-//            @SerializedName("humidity")
-//            val humidity: Int? = 0
-//            @SerializedName("pressure")
-//            val pressure: Double? = 0.0
-//            @SerializedName("sea_level")
-//            val seaLevel: Double? = 0.0
-//            @SerializedName("temp_max")
-//            val tempMax: Double? = 0.0
-//        }
+        open class Main{@SerializedName("temp")
+        val temp: Double? = 0.0
+            @SerializedName("temp_min")
+            val tempMin: Double? = 0.0
+            @SerializedName("grnd_level")
+            val grndLevel: Double? = 0.0
+            @SerializedName("humidity")
+            val humidity: Int? = 0
+            @SerializedName("pressure")
+            val pressure: Double? = 0.0
+            @SerializedName("sea_level")
+            val seaLevel: Double? = 0.0
+            @SerializedName("temp_max")
+            val tempMax: Double? = 0.0
+        }
 
         open class WeatherItem{
             @SerializedName("icon")
@@ -86,20 +91,26 @@ open class WeatherApiDao{
                          val lat: Double? = 0.0}
 
 
-        open class Wind{@SerializedName("deg")
-                        val deg: Int? = 0
-                        @SerializedName("speed")
-                        val speed: Double? = 0.0}
+        open class Wind{
+            @SerializedName("deg")
+            @Expose
+            val deg: Double? = 0.0
+            @SerializedName("speed")
+            @Expose
+            val speed: Double? = 0.0}
 
 
         open class Rain{@SerializedName("3h")
+                        @Expose
                         val H: Double? = 0.0}
 
 
         open class Clouds{@SerializedName("all")
-                          val all: Int? = 0}
+                          @Expose
+                          val all: Double? = 0.0}
 
         open class Sys{@SerializedName("country")
+                       @Expose
                        val country: String? = ""}
     }
 

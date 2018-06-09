@@ -7,9 +7,16 @@ class Weather(
         var name: String? = null,
         var main: String? = null,
         var icon: String? = null,
-        var description: String? = null
+        var description: String? = null,
+        var temperature: String? = null,
+        var humidity:   String?=null,
+        var seaLevel:String?=null
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString(),
             parcel.readString(),
             parcel.readString(),
             parcel.readString()){
@@ -20,6 +27,9 @@ class Weather(
         parcel.writeString(main)
         parcel.writeString(icon)
         parcel.writeString(description)
+        parcel.writeString(temperature)
+        parcel.writeString(humidity)
+        parcel.writeString(seaLevel)
     }
 
     override fun describeContents(): Int {
