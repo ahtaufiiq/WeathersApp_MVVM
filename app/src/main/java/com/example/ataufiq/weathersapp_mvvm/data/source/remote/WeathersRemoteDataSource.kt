@@ -9,6 +9,8 @@ import com.example.ataufiq.weathersapp_mvvm.data.source.WeathersDataSource
 import com.example.ataufiq.weathersapp_mvvm.util.Constant
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 object WeathersRemoteDataSource : WeathersDataSource {
     private val apiService = WeathersRemoteService.create();
@@ -28,6 +30,23 @@ object WeathersRemoteDataSource : WeathersDataSource {
                                     weather.main=weatherItem.main
                                 }
 
+                                val df = DecimalFormat("#.##")
+                                df.roundingMode = RoundingMode.CEILING
+
+                                var temp: Double?=null
+                                var humidity: Int?=null
+                                var seaLevel: Double?=null
+
+                                items.main.also { temp=it?.temp?.minus(273.15) }
+                                        .also { humidity=it?.humidity }
+                                        .also { seaLevel=it?.seaLevel }
+
+                                weather.temperature="${df.format(temp)} °C"
+
+                                weather.humidity="$humidity %"
+
+                                weather.seaLevel="$seaLevel mdpl"
+
                                 listWeather.add(weather)
                             }
 
@@ -40,3 +59,4 @@ object WeathersRemoteDataSource : WeathersDataSource {
     }
 
 }
+

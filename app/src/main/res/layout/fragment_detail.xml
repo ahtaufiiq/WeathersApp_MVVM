@@ -8,26 +8,27 @@
             name="vm"
             type="com.example.ataufiq.weathersapp_mvvm.DetailActivity.DetailViewModel"/>
     </data>
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvDetailTitle"
+            android:id="@+id/tv_detail_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:maxLines="2"
-            android:text="@{vm.details.name}"
+            android:text="@{`Kota `+vm.details.name}"
             android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:textSize="24sp"
+            android:textSize="32sp"
             android:textStyle="bold"
-            tools:text="Kota Bandung"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Kota Bandung" />
 
         <ImageView
             android:id="@+id/img_weather"
@@ -39,30 +40,108 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDetailTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_title"
             tools:src="@drawable/ic_launcher_background" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_detail_weather"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@{vm.details.main}"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            tools:text="Clear"
             android:textAlignment="center"
-            app:layout_constraintTop_toBottomOf="@+id/img_weather" />
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@+id/img_weather"
+            tools:text="Clear" />
 
         <TextView
+            android:id="@+id/tv_detail_weather_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            tools:text="Sky Is Clear"
+            android:layout_marginTop="@dimen/margin_12"
             android:text="@{vm.details.description}"
             android:textAlignment="center"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_weather"
+            tools:text="Sky Is Clear" />
+
+        <ImageView
+            android:id="@+id/img_temperature"
+            android:layout_width="@dimen/size_32dp"
+            android:layout_height="@dimen/size_32dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="@dimen/margin_24"
+            android:src="@drawable/ic_temperature"
+            app:layout_constraintEnd_toStartOf="@+id/tv_detail_temperature"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_weather_description" />
+
+        <TextView
+            android:id="@+id/tv_detail_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@{vm.details.temperature}"
+            app:layout_constraintEnd_toStartOf="@+id/img_humidity"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/img_temperature"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_weather_description"
+            tools:text="Suhu" />
+
+        <ImageView
+            android:id="@+id/img_humidity"
+            android:layout_width="@dimen/size_32dp"
+            android:layout_height="@dimen/size_32dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="@dimen/margin_24"
+            android:src="@drawable/ic_humidity"
+            app:layout_constraintEnd_toStartOf="@+id/tv_detail_humidity"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_detail_temperature"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_weather_description" />
+
+        <TextView
+            android:id="@+id/tv_detail_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@{vm.details.humidity}"
+            app:layout_constraintEnd_toStartOf="@+id/img_height"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/img_humidity"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_weather_description"
+            tools:text="Humidity" />
+
+        <ImageView
+            android:id="@+id/img_height"
+            android:layout_width="@dimen/size_32dp"
+            android:layout_height="@dimen/size_32dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="@dimen/margin_24"
+            android:src="@drawable/ic_height"
+            app:layout_constraintEnd_toStartOf="@+id/tv_detail_height_sea_level"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_detail_humidity"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_weather_description" />
+
+        <TextView
+            android:id="@+id/tv_detail_height_sea_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@{vm.details.seaLevel}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/img_height"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_weather_description"
+            tools:text="Humidity" />
+
     </android.support.constraint.ConstraintLayout>
 </layout>
